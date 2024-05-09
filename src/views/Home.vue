@@ -78,6 +78,8 @@ export default {
   /* background: linear-gradient(to bottom, #0ea1eb, #353333); */
   /* background: rgb(56, 58, 59); */
   /* background: radial-gradient(circle, rgba(59, 86, 219, 1) 0%, rgba(61, 74, 138, 1) 100%); */
+  overflow-y: auto; /* Permite rolar verticalmente */
+  max-height: 100%;
 }
 
 .title-container {
