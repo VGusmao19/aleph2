@@ -8,9 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
   </head>
+
   <body>
     <div class="geral">
-      <ModalConsulta v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray"
+      <ModalFatorial v-show="isModalVisible" @mandouArray="mandouArray" @closeModalCadastro="closeModal"
         @mandouValor="mandouValor" />
       <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
       <!-- <NavComponente/> -->
@@ -18,26 +19,25 @@
       <transition name="fade">
         <div class="container">
           <div class="boxcontainer">
+            <div id="indicador">n:</div>
             <div class="caixas" v-for="(elemento, index) in elementos" :key="index">
               <div v-bind:id="`box${index}`" class="box">
                 {{ elemento }}
               </div>
             </div>
-            <div id="box_esquerda">resultado:</div>
+            <div id="box_esquerda">n acumulado:</div>
             <div id="valor_esquerda"></div>
           </div>
           <div class="imagemContainer">
+            <div id="bordacodigo"></div>
             <div v-if="!mostrarJavaScript">
               <pre v-highlightjs>
           <code class="python">
-          def fatorial(num):
-          if num == 0 or num == 1:
-              return 1
-          else:
-              resultado = 1
-              for i in range(2, num + 1):
-                  resultado *= i
-              return resultado
+            def fatorial(n):
+              if n == 1:
+                return 1
+              else:
+                return n * fatorial(n - 1)
           </code>
         </pre>
             </div>
@@ -50,9 +50,9 @@
         <input class="botoes" v-show="ordenou" @click="pausar" type="submit" data-toggle="button"
           value="Pausar/Continuar" />
       </div>
-
     </div>
   </body>
+
   </html>
 </template>
 <script>
@@ -64,14 +64,14 @@ import { TextPlugin } from "gsap/TextPlugin";
 
 (TextPlugin);
 
-import ModalConsulta from "../components/Modais/ModalSearch.vue"
+import ModalFatorial from "../components/Modais/ModalFatorial.vue"
 import Vue from 'vue'
 
 
 var tl = gsap.timeline()
 
 export default {
-  components: { ModalConsulta },
+  components: { ModalFatorial },
   name: 'HomeView',
   data() {
     return {
@@ -120,11 +120,11 @@ export default {
       console.log(array.length)
       this.elementos = []
       this.oredenados = []
-      for (let i = 0; i < 1; i++) {
-        this.$set(this.elementos, i, i)
-        this.oredenados.push(array[i])
+      for (let i = 0; i < array.length; i++) {
+        this.$set(this.elementos, i, i + 1)
+        this.oredenados.push(i)
       }
-      sort(this.oredenados)
+      // sort(this.oredenados)
       console.log("elementos " + this.elementos)
       console.log("oredenados " + this.oredenados)
       console.log("elementos " + this.elementos)
@@ -155,41 +155,45 @@ export default {
       //irei usar valor direita como valor de n (numero que sera usado na funcao fatorial)
       this.ordenou = true
       tl.set("#bordacodigo", { scale: 0.5 })
-      tl.to("#bordacodigo", { y: -41.6666666667 * 5.5 });//controle da linha que le o codigo
-      tl.to("#bordacodigo", { y: -41.6666666667 * 4.5 });//controle da linha que le o codigo
-      // for (var i = 0; i < this.elementos.length; i++) {
-      //   gsap.set(`#box${this.oredenados.indexOf(this.elementos[i])}` ,{ x: (i-this.oredenados.indexOf(this.elementos[i]))*100});
-      // }//esse for é a primeira animação e é responsaável por desordenar o vetor mostrado na tela. multiplicado por 100, que é a largura do elemento HTML
-      // gsap.set("#box_i",{scale: 1})//tamanho da palavra subvalor
-      gsap.set("#valor_esquerda", { x: -100 })//valor de valor retornado
+      tl.to("#bordacodigo", { y: -41.6666666667 * 1.5, duration: 1.0});//controle da linha que le o codigo
+      gsap.set("#valor_esquerda", { x: 80 })//valor de valor retornado
       gsap.set("#valor_esquerda", { y: 150 })
-      gsap.set("#valor_direita", { x: -80 })//valor de n
+      gsap.set("#valor_direita", { x: 80 })//valor de n
       gsap.set("#valor_direita", { y: 200 })
       gsap.set("#valor_i", { y: 100 })//valor de subvalor
       gsap.set("#valor_i", { x: -100 })
-      var meuElementoI = document.getElementById(`box${0}`);
       var num = this.meuValor;
-      var contaBloco = this.meuValor;
+      var contadorCor = this.meuValor - 1;
+      // console.log('contadoooooor'+contadorCor) //contador para as cores que vao sendo apagadas
       this.meuValor = 1; //atribuindo 1 para o valor da recusão ficar certo
+
+
+      //programando as cores
       for (let i = 2; i <= num; i++) {
+        
+          tl.to("#bordacodigo", { y: -41.6666666667 * -0.1, duration: 1.0 });//controle da linha que le o codigo
+          tl.to("#bordacodigo", { y: -41.6666666667 * -0.6, duration: 1.0 });//controle da linha que le o codigo
+          //cores sendo apagadas a cada chamada da funcao recursiva
+          tl.to(`#box${contadorCor}`, {
+            duration: 0.5,
+            backgroundColor: 'grey',
+          });
+          tl.to("#bordacodigo", { y: -41.6666666667 * 1.5, duration: 1.0});//controle da linha que le o codigo
+          contadorCor = contadorCor - 1
+        }
+
+
+
+      for (let i = 2; i <= num; i++) {
+        tl.to("#bordacodigo", { y: -41.6666666667 * 1.0, duration: 1.0 });//controle da linha que le o codigo
         this.meuValor *= i;
         tl.to("#valor_esquerda", {
           text: {
             value: String(this.meuValor),
           },
-        });      
-        this.$createElement(this.elementos, 1, i);
-        tl.to(meuElementoI, {
-          text: {
-            value: String(i),
-          },
         });
+        tl.to("#bordacodigo", { y: -41.6666666667 * 1.5, duration: 1.0});//controle da linha que le o codigo
       }
-      tl.to("#valor_direita", {
-        text: {
-          value: String(this.meuValor),//mostra na tela o valor que a variavel i armazena
-        },
-      });
     }
   }
 }
@@ -305,7 +309,14 @@ export default {
   /* left: -20%;
     right: 35%;
     top: 60%; */
-  transform: translate(-115%, 200%);
+  transform: translate(-85%, 200%);
+}
+
+#indicador {
+  color: BLACK;
+  /* position: absolute; */
+  font-size: 50px;
+
 }
 
 #box_direita {
@@ -364,12 +375,13 @@ export default {
 
 #bordacodigo {
   height: 41.6666666667px;
-  width: 500px;
+  width: 550px;
   position: absolute;
   background-color: white;
   border-style: solid;
   border-width: 4px;
   opacity: 0.5;
+  margin-left: 60px;
 }
 
 

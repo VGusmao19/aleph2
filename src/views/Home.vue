@@ -17,7 +17,7 @@
     <div class="tudo">
       <div class="tela">
         <div class="title-container">
-          <h1>Algoritmos disponíveis para visualização:</h1>
+          <!-- <h1>Algoritmos disponíveis para visualização:</h1> -->
         </div>
         <div class="buttons-container">
           <div class="button-content">

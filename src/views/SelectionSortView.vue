@@ -242,11 +242,11 @@ export default {
           }, "<");
           tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, {
             duration: 0.3,
-            backgroundColor: 'red',
+            backgroundColor: '#FFB6C1',
           });
           tl.to(`#box${this.oredenados.indexOf(this.elementos[min])}`, {
             duration: 0.3,
-            backgroundColor: 'red',
+            backgroundColor: '#FFB6C1',
           }, "<");
           tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, {
             duration: 1, ease: "sine.out",

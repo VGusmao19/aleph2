@@ -123,14 +123,18 @@ export default {
     },
     fechouModal(){
       console.log("entou no fechouModal ")
+      if(this.valorProcurado >7){
+        console.log("entou no findRepetitions ")
+        Toast.fire('Valor procurado não pode ser maior que 7!!', '', 'error')
+      }
       if(this.findRepetitions(this.array)){
         console.log("entou no findRepetitions ")
         Toast.fire('Não é permitido números repetidos!!', '', 'error')
       }if(this.findUndefined(this.array)){
         console.log("entou no findUndefined ")
         Toast.fire('Não é permitido campos vazios!!', '', 'error')
-      }if(!this.findUndefined(this.array)&&!this.findRepetitions(this.array)){
-        console.log("entou nos 2 ")
+      }if(!this.findUndefined(this.array)&&!this.findRepetitions(this.array)&&!(this.valorProcurado>7)){
+        console.log("entou nos 3")
         for(let i=0;i<this.array.length;i++){
           this.array[i]=Number(this.array[i])
         }

@@ -244,7 +244,7 @@ export default {
             });
           }
         } else {
-          tl.to("#bordacodigo", { y: -41.6666666667 * -1.0 });//controle da linha que le o codigo
+          tl.to("#bordacodigo", { y: -41.6666666667 * -0.8 });//controle da linha que le o codigo
           esquerda = meio + 1;
           for (var i = 0; i < esquerda; i++) {
             tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, {
