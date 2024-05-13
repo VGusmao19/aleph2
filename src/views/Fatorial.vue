@@ -185,14 +185,19 @@ export default {
 
 
       for (let i = 2; i <= num; i++) {
-        tl.to("#bordacodigo", { y: -41.6666666667 * 1.0, duration: 1.0 });//controle da linha que le o codigo
+        if(i==2){
+          tl.to("#bordacodigo", { y: -41.6666666667 * 1.0, duration: 1.0 });//controle da linha que le o codigo
+          tl.to("#bordacodigo", { y: -41.6666666667 * 0.5, duration: 1.0 });//controle da linha que le o codigo
+        }else{
+          tl.to("#bordacodigo", { y: -41.6666666667 * -0.1, duration: 1.0 });//controle da linha que le o codigo
+          tl.to("#bordacodigo", { y: -41.6666666667 * -0.6, duration: 1.0 });//controle da linha que le o codigo
+        }
         this.meuValor *= i;
         tl.to("#valor_esquerda", {
           text: {
             value: String(this.meuValor),
           },
         });
-        tl.to("#bordacodigo", { y: -41.6666666667 * 1.5, duration: 1.0});//controle da linha que le o codigo
       }
     }
   }
