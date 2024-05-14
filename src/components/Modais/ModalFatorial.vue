@@ -10,7 +10,7 @@
                 text-color-principal
                 card-item-result
               ">
-              <h5 class="modal-title mx-auto my-0">Diga os elementos do vetor e valor para busca </h5>
+              <h5 class="modal-title mx-auto my-0">Valor a ser fatorado:</h5>
   
             </div>
   
@@ -19,27 +19,24 @@
   
   
         <div class="modal-body">
-          <p>Inputs</p>
+          <p></p>
           <div class="d-flex flex-row justify-content-center">
             <input  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  maxlength="2" class="form-control inputs mr-1"  v-for="(elemento, index) in array" :key="index" v-model="array[index]">
             
           </div>
-          Valor Procurado: 
+          <div class="all">
+          Valor: 
+          
           <div class="d-flex flex-row justify-content-center">
             <input  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  maxlength="2" class="form-control inputs mr-1"  v-model="valorProcurado" placeholder="Insira o valor procurado">
-            <!-- adicionando input de valor procurado -->
           </div>
-          
-          
-  
-     
+          </div>
+
         </div>
   
   
               <div class="modal-footer">
-  
-  
-      
+                
                 <input  @click="fechouModal" type="submit" class="btn btn-primary" data-toggle="button" value="Fechar"/>
               </div>
               <input  @click="pop" type="submit" class="btn btn-primary mr-2 fa-solid fa-plus" data-toggle="button" value="Retirar"> 
@@ -65,7 +62,7 @@
       return {
         array:[],
         // variavel para valor procurado
-        valorProcurado: 3
+        valorProcurado: 5
       };
     },
   
@@ -150,10 +147,7 @@
           this.$emit('mandouArray',this.array)
           this.$emit('mandouValor',this.valorProcurado)
         }
-  
       }
-  
-  
     }
   };
   </script>
@@ -161,6 +155,11 @@
   .inputs{
     width: 45px;
     height: 45px;
+  }
+  .all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   </style>
   
