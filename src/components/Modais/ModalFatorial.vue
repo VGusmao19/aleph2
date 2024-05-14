@@ -39,8 +39,6 @@
                 
                 <input  @click="fechouModal" type="submit" class="btn btn-primary" data-toggle="button" value="Fechar"/>
               </div>
-              <input  @click="pop" type="submit" class="btn btn-primary mr-2 fa-solid fa-plus" data-toggle="button" value="Retirar"> 
-              <input  @click="push" type="submit" class="btn btn-primary" data-toggle="button" value="Adicionar"/>
             </div>
           </div>
         </div>
