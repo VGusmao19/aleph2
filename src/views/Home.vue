@@ -21,13 +21,13 @@
         </div>
         <div class="buttons-container">
           <div class="button-content">
-            <button v-for="(button, index) in topButtons" :key="index" class="botao" @click="goToPage(button.route)">
+            <button v-for="(button, index) in topButtons" :key="index" class="button" @click="goToPage(button.route)">
             <img :src="button.icon" alt="Ícone" class="button-icon" :style="{ width: button.iconWidth, height: button.iconHeight, color: button.color }">
             {{button.text }}</button>
           </div>
         </div>
         <div class="buttons-container">
-          <button v-for="(button, index) in bottomButtons" :key="index" class="botao" @click="goToPage(button.route)">
+          <button v-for="(button, index) in bottomButtons" :key="index" class="button" @click="goToPage(button.route)">
           <img :src="button.icon" alt="Ícone" class="button-icon" :style="{ width: button.iconWidth, height: button.iconHeight, color: button.color }">
           {{ button.text }}</button>
         </div>
@@ -111,7 +111,7 @@ export default {
   font-size: larger;
 }
 
-.botao {
+.button {
   display: flex;
   flex-direction: column;
   align-items: center;

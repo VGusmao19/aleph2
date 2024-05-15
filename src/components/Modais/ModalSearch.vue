@@ -11,7 +11,6 @@
               card-item-result
             ">
             <h5 class="modal-title mx-auto my-0">Diga os elementos do vetor e valor para busca </h5>
-
           </div>
 
           <div class="table-responsive max-height-content-detail-big p-2">
