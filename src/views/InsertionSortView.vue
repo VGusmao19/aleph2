@@ -10,6 +10,7 @@
 </head>
 <body>
   <div class="geral">
+    <Botao/>
     <ModalConsultaPessoa v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray" />
     <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
     <h3>Atualize a página(F5) caso enfrente problemas</h3>
@@ -71,11 +72,11 @@ gsap.registerPlugin(TextPlugin);
 
 import ModalConsultaPessoa from "../components/Modais/ModalCreateArray.vue"
 import Vue from 'vue'
-
+import Botao from '../components/Botao.vue'
 var tl = gsap.timeline()
 
 export default {
-  components: { ModalConsultaPessoa },
+  components: { ModalConsultaPessoa, Botao },
   name: 'HomeView',
   data() {
     return {

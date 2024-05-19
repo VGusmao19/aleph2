@@ -11,6 +11,7 @@
 
   <body>
     <div class="geral">
+      <Botao/>
       <ModalFatorial v-show="isModalVisible" @mandouArray="mandouArray" @closeModalCadastro="closeModal"
         @mandouValor="mandouValor" />
       <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
@@ -66,12 +67,12 @@ import { TextPlugin } from "gsap/TextPlugin";
 
 import ModalFatorial from "../components/Modais/ModalFatorial.vue"
 import Vue from 'vue'
-
+import Botao from '../components/Botao.vue'
 
 var tl = gsap.timeline()
 
 export default {
-  components: { ModalFatorial },
+  components: { ModalFatorial, Botao },
   name: 'HomeView',
   data() {
     return {

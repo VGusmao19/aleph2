@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="geral">
+      <Botao/>
       <ModalConsulta v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray"
         @mandouValor="mandouValor" />
       <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
@@ -87,11 +88,11 @@ import { TextPlugin } from "gsap/TextPlugin";
 import ModalConsulta from "../components/Modais/ModalSearch.vue"
 import Vue from 'vue'
 import hljs from 'highlight.js';
-
+import Botao from '../components/Botao.vue'
 var tl = gsap.timeline()
 
 export default {
-  components: { ModalConsulta },
+  components: { ModalConsulta, Botao },
   name: 'HomeView',
   data() {
     return {

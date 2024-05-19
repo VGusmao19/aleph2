@@ -11,7 +11,7 @@
 
   <body>
     <div class="geral">
-
+      <Botao/>
 
       <ModalConsulta v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray"
         @mandouValor="mandouValor" />
@@ -75,11 +75,11 @@ gsap.registerPlugin(TextPlugin);
 
 import ModalConsulta from "../components/Modais/ModalSearch.vue"
 import Vue from 'vue'
-
+import Botao from '../components/Botao.vue'
 var tl = gsap.timeline()
 
 export default {
-  components: { ModalConsulta },
+  components: { ModalConsulta, Botao },
   name: 'HomeView',
   data(valorProcurado) {
     return {
