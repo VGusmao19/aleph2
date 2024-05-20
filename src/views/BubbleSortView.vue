@@ -10,8 +10,8 @@
   </head>
 
   <body>
+    <Botao/>
     <div class="geral">
-      <Botao/>
       <ModalConsultaPessoa v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray" />
       <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
       <!-- <h3>Atualize a página(F5) caso enfrente problemas</h3> -->
