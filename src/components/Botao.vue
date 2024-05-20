@@ -1,9 +1,9 @@
 <template>
   <router-link :to="{ name: 'Home' }">
-    <img src="@/assets/home.png" alt="Home" class="top-left-button" />
+    <img src="@/assets/home.png" alt="Home" class="home" />
   </router-link>
 </template>
-  
+
   <script>
   export default {
     name: 'Botao',
@@ -14,19 +14,17 @@
     }
   }
   </script>
-  
-  <style scoped>
-  .top-left-button {
-    position: absolute;
+
+  <style>
+  .home {
+    position: fixed;
     top: 10px;
     left: 10px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     color: black;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    width: 5%;
-    height: 8%;
+    width: 3%;
+    height: 5%;
   }
   </style>
-  

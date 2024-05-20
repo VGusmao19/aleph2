@@ -14,14 +14,13 @@
       <Botao/>
       <ModalConsultaPessoa v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray" />
       <div class="modal-backdrop fade show" v-show="isModalVisible"></div>
-      <h3>Atualize a página(F5) caso enfrente problemas</h3>
+      <!-- <h3>Atualize a página(F5) caso enfrente problemas</h3> -->
       <transition name="fade">
         <div class="container">
           <div class="boxcontainer">
             <div v-bind:id="`box${index}`" class="box" v-for="(elemento, index) in elementos" :key="index">
               {{ elemento }}
             </div>
-
             <div id="i">
               <div id="borda"></div>i
             </div>
@@ -297,8 +296,9 @@ export default {
   width: 100%;
   height: 100vh;
   /* adicionados */
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+
 }
 
 .box {
@@ -320,6 +320,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* adicionados */
+  width: 100%;
+  height: 100vh;
 
 }
 
