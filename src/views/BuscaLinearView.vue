@@ -10,8 +10,8 @@
   </head>
 
   <body>
+    <Botao/>
     <div class="geral">
-      <Botao/>
 
       <ModalConsulta v-show="isModalVisible" @closeModalCadastro="closeModal" @mandouArray="mandouArray"
         @mandouValor="mandouValor" />
